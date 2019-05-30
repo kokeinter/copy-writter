@@ -1,8 +1,15 @@
 .contents
   -# = odai.text あとで追加
-  = form_for [@odai, @copy], url:odai_copies_path do |f|
+  .form
+    = form_for [@odai, @copy], url:odai_copies_path do |f|
 
-    = f.label :catchphrase, "キャッチコピー"
-    = f.text_field :catchphrase
+      = f.label :catchphrase, "キャッチコピー"
+      = f.text_field :catchphrase
 
-    = f.submit "Send"
+      = f.label :image
+      = f.file_field :image
+
+      = f.label :presentation, "プレゼン内容"
+      = f.text_area :presentation
+
+      = f.submit "Send"

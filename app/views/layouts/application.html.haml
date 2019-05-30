@@ -15,8 +15,13 @@
     %header
       =link_to root_path do
         %h1.toplogo CopyWritter
-      %button.btn.btn-outline-dark{type: "button"} 新規登録
-      %button.btn.btn-outline-dark{type: "button"} ログイン
+      - if user_signed_in?
+        %a.btn.btn-primary{href: "/users/#{current_user.id}", role: "button"} マイページ
+        -# %a.btn.btn-primary{href: destroy_user_session_path, method: :delete, role: "button"} ログアウト
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+      - else
+        %a.btn.btn-primary{href: new_user_registration_path, role: "button"} 新規登録
+        %a.btn.btn-primary{href: new_user_session_path, role: "button"} ログイン
       .headerline
         .header__line--red
         .header__line--orange

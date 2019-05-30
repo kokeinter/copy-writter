@@ -2,17 +2,18 @@
 .classification
   .big__classification  
     = link_to odais_path do
-      .big__classification__odai お題
+      .btn.btn-secondary.btn-lg.big__classification__odai お題
     = link_to root_path do
-      .big__classification__copy キャッチコピー
-  .small__classification  新着
+      .btn.btn-secondary.btn-lg.big__classification__copy キャッチコピー
+    .btn.btn-secondary.small__classification  新着
 .contents
   .a__odai
     - @odais.each do |odai|
       = odai.text
       = odai.image
-      = link_to new_odai_copy_path(odai) do
-        .create__copy--btn このお題に投稿する
+      -if user_signed_in?
+        = link_to new_odai_copy_path(odai) do
+          .btn.btn-primary.create__copy--btn このお題に投稿する
   
 -# ログイン機能実施後に登録して実装
     -# = copy.user.name
