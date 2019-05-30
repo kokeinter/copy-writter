@@ -1,0 +1,8 @@
+.contents
+  -# = odai.text あとで追加
+  = form_for [@odai, @copy], url:odai_copies_path do |f|
+
+    = f.label :catchphrase, "キャッチコピー"
+    = f.text_field :catchphrase
+
+    = f.submit "Send"

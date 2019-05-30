@@ -7,9 +7,12 @@
       .big__classification__copy キャッチコピー
   .small__classification  新着
 .contents
-  - @copies.each do |copy|
-    = copy.catchphrase
-    = copy.presentation
+  .a__odai
+    - @odais.each do |odai|
+      = odai.text
+      = odai.image
+      = link_to new_odai_copy_path(odai) do
+        .create__copy--btn このお題に投稿する
+  
 -# ログイン機能実施後に登録して実装
     -# = copy.user.name
-
