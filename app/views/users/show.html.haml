@@ -1,5 +1,12 @@
 .user__name
   = "#{current_user.name}さんのマイページ"
+.user_odais
+  = "お題"
+  - @odais.each do |odai|
+    = odai.text
+    = image_tag odai.image.url, class:'odai_image' if odai.image.present?
+.user_copies
+  = "キャッチコピー"
   - @copies.each do |copy|
     = copy.odai.text
     = copy.catchphrase
