@@ -10,7 +10,8 @@
   .a__odai
     - @odais.each do |odai|
       = odai.text
-      = odai.image
+      = image_tag odai.image.url, class:'odai_image' if odai.image.present?
+      -# = image_tag "#{odai.image.url}", class:'odai_image'
       -if user_signed_in?
         = link_to new_odai_copy_path(odai) do
           .btn.btn-primary.create__copy--btn このお題に投稿する

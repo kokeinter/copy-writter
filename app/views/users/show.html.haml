@@ -1,9 +1,9 @@
 .user__name
   = "#{current_user.name}さんのマイページ"
-- @copies.each do |copy|
-  = copy.odai.text
-  = copy.catchphrase
-  = copy.presentation
-  = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
-  = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
-  = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
+  - @copies.each do |copy|
+    = copy.odai.text
+    = copy.catchphrase
+    = copy.presentation
+    = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
+    = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
+    = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'

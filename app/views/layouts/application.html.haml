@@ -23,6 +23,7 @@
               -# %a.btn.btn-primary{href: destroy_user_session_path, method: :delete, role: "button"} ログアウト
               = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary col-md-1 float-right mx-auto d-block'
               %a.btn.btn-primary.col-md-1.float-right.mx-auto.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
+              = link_to "お題投稿", new_odai_path,  class: 'btn btn-primary col-md-1 float-right mx-auto d-block'
             - else
               %a.btn.btn-primary.col-md-1.float-right.mx-auto.d-block{href: new_user_session_path, role: "button"} ログイン
               %a.btn.btn-primary.col-md-1.float-right.mx-auto.d-block{href: new_user_registration_path, role: "button"} 新規登録

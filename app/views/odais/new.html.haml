@@ -1,0 +1,10 @@
+.title  お題を投稿する
+.form
+  = form_for @odai do |f|
+    = f.label :image, "お題イメージ"
+    = f.file_field :image
+
+    = f.label :text, "お題詳細"
+    = f.text_area :text
+
+    = f.submit "投稿する"

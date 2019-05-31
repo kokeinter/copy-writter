@@ -3,4 +3,7 @@ class Copy < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
   belongs_to :odai
+
+
+  mount_uploader :image, ImageUploader
 end
