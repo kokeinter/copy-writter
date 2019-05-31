@@ -18,6 +18,26 @@ class CopiesController < ApplicationController
 
   end
 
+  def destroy
+    # binding.pry
+    copy = Copy.find(params[:id])
+    copy.destroy if copy.user_id == current_user.id
+    redirect_to "/users/#{current_user.id}"
+  end
+
+  def edit
+    @copy = Copy.find(params[:id])
+    # binding.pry id=2
+  end
+
+  def update
+    copy = Copy.find(params[:id])
+    if copy.user_id == current_user.id
+      copy.update(copy_params)
+    end
+    redirect_to "/"
+  end
+
   private
 
   def copy_params
