@@ -7,6 +7,7 @@
     %title CopyWritter
     -# bootstrapのcss読み込み
     %link{crossorigin: "anonymous", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", rel: "stylesheet"}/
+    %link{href: "css/style.scss", rel: "stylesheet"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -18,15 +19,20 @@
           .col-12.clearfix
             .logo-div.col-md-3.float-left
               =link_to root_path do
-                %h1.toplogo CopyWritter
+                .toplogo CopyWritter
             - if user_signed_in?
               -# %a.btn.btn-primary{href: destroy_user_session_path, method: :delete, role: "button"} ログアウト
-              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary col-md-1 float-right mx-auto d-block'
-              %a.btn.btn-primary.col-md-1.float-right.mx-auto.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
-              = link_to "お題投稿", new_odai_path,  class: 'btn btn-primary col-md-1 float-right mx-auto d-block'
+              .col-md-2.float-right
+                = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
+              .col-md-2.float-right
+                %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
+              .col-md-2.float-right
+                = link_to "お題投稿", new_odai_path,  class: 'btn btn-primary d-block'
             - else
-              %a.btn.btn-primary.col-md-1.float-right.mx-auto.d-block{href: new_user_session_path, role: "button"} ログイン
-              %a.btn.btn-primary.col-md-1.float-right.mx-auto.d-block{href: new_user_registration_path, role: "button"} 新規登録
+              .col-md-2.float-right
+                %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} ログイン
+              .col-md-2.float-right
+                %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 新規登録
         .headerline
           .header__line--red
           .header__line--orange
