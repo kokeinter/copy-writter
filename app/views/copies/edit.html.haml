@@ -1,6 +1,6 @@
 .contents
-  -# = odai.text あとで追加
-  -# new.html.hamlとprefixが違うので部分テンプレート時に注意
+  = @copy.odai.text
+  -# new.html.hamlとodaiの取り方、prefixが違うので部分テンプレート時に注意
   .form
     = form_for [@odai, @copy], url:odai_copy_path do |f|
       = f.label :catchphrase, "キャッチコピー"

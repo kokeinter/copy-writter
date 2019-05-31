@@ -6,7 +6,9 @@ class CopiesController < ApplicationController
   end
 
   def new
+    # binding.pry
     @copy = Copy.new
+    @odai = Odai.find(params[:odai_id])
   end
 
   def create
@@ -36,6 +38,10 @@ class CopiesController < ApplicationController
       copy.update(copy_params)
     end
     redirect_to "/"
+  end
+
+  def show
+    @copy = Copy.find(params[:id])
   end
 
   private

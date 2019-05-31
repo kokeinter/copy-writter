@@ -1,0 +1,7 @@
+.odai
+  = @copy.odai.text
+  = @copy.catchphrase
+  -# = @copy.image
+  = @copy.presentation
+  - if user_signed_in?
+    = "コメント送信フォーム（仮）"
