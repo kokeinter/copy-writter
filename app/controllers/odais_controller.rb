@@ -31,7 +31,7 @@ class OdaisController < ApplicationController
   def destroy
     odai = Odai.find(params[:id])
     odai.destroy if odai.user_id == current_user.id
-    redirect_to odais_path
+    redirect_back(fallback_location: odais_path)
   end
 
   private
