@@ -16,6 +16,23 @@ class OdaisController < ApplicationController
     redirect_to odais_path
   end
 
+  def edit
+    @odai = Odai.find(params[:id])
+  end
+
+  def update
+    odai = Odai.find(params[:id])
+    if odai.user_id == current_user.id
+      odai.update(odai_params)
+    end
+    redirect_to odais_path
+  end
+
+  def destroy
+    odai = Odai.find(params[:id])
+    odai.destroy if odai.user_id == current_user.id
+    redirect_to odais_path
+  end
 
   private
 

@@ -5,6 +5,9 @@
   - @odais.each do |odai|
     = odai.text
     = image_tag odai.image.url, class:'odai_image' if odai.image.present?
+    = link_to edit_odai_path(odai) do
+      .btn.btn-primary.edit__copy--btn お題を編集する
+    = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
 .user_copies
   = "キャッチコピー"
   - @copies.each do |copy|
