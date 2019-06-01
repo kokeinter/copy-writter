@@ -4,4 +4,8 @@
   -# = @copy.image
   = @copy.presentation
   - if user_signed_in?
-    = "コメント送信フォーム（仮）"
+    .form
+      = form_for [@odai,@copy,@comment] do |f|
+        = f.label :text, "コメント"
+        = f.text_area :text
+        = f.submit "コメントを投稿する"
