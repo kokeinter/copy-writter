@@ -3,17 +3,28 @@
 .user_odais
   = "お題"
   - @odais.each do |odai|
-    = odai.text
-    = image_tag odai.image.url, class:'odai_image' if odai.image.present?
+    = odai.text    
     = link_to edit_odai_path(odai) do
-      .btn.btn-primary.edit__copy--btn お題を編集する
-    = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
+      %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+      -# .btn.btn-primary.edit__copy--btn お題を編集する
+    -# = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
+    = link_to odai_path(odai) ,method: :delete do
+      %i.fa.fa-trash-o{"aria-hidden": "true"}
+    = image_tag odai.image.url, class:'odai_image',width: "250",height:"250" if odai.image.present?
+
 .user_copies
   = "キャッチコピー"
   - @copies.each do |copy|
     = copy.odai.text
     = copy.catchphrase
     = copy.presentation
-    = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
-    = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
-    = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
+    -# = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
+    -# = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
+    -# = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
+
+    = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
+      %i.fa.fa-trash-o{"aria-hidden": "true"}
+    = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
+      %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+    = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
+      %i.fa.fa-newspaper-o{"aria-hidden": "true"}

@@ -17,35 +17,50 @@
       %header
         .row
           .col-12.clearfix
-            .logo-div.col-md-3.float-left
+            .logo-div.col-md-4
               =link_to root_path do
                 .toplogo CopyWritter
             - if user_signed_in?
               -# %a.btn.btn-primary{href: destroy_user_session_path, method: :delete, role: "button"} ログアウト
-              .col-md-2.float-right
-                = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
-              .col-md-2.float-right
-                %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
-              .col-md-2.float-right
+              .col-md-2
                 = link_to "お題投稿", new_odai_path,  class: 'btn btn-primary d-block'
+              .col-md-2
+                %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
+              .col-md-2
+                = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
             - else
               .col-md-2.float-right
                 %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} ログイン
               .col-md-2.float-right
                 %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 新規登録
-        .headerline
-          .header__line--red
-          .header__line--orange
-          .header__line--yellow
-          .header__line--yellowgreen
-          .header__line--lightblue
-          .header__line--blue
-          .header__line--purple
+        .header__footer__line
+          .header__footer__line--red
+          .header__footer__line--orange
+          .header__footer__line--yellow
+          .header__footer__line--yellowgreen
+          .header__footer__line--lightblue
+          .header__footer__line--blue
+          .header__footer__line--purple
       = yield
       -# bootstrapのjs読み込み
       %script{crossorigin: "anonymous", integrity: "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", src: "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
       %script{crossorigin: "anonymous", integrity: "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1", src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"}
       %script{crossorigin: "anonymous", integrity: "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", src: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"}
       %footer
+        .header__footer__line
+          -# .header__footer__line--red
+          -# .header__footer__line--orange
+          -# .header__footer__line--yellow
+          -# .header__footer__line--yellowgreen
+          -# .header__footer__line--lightblue
+          -# .header__footer__line--blue
+          -# .header__footer__line--purple
+          .header__footer__line--purple
+          .header__footer__line--blue
+          .header__footer__line--lightblue
+          .header__footer__line--yellowgreen
+          .header__footer__line--yellow
+          .header__footer__line--orange
+          .header__footer__line--red
         %p お問い合わせフォーム
 
