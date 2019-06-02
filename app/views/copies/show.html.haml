@@ -1,8 +1,12 @@
-.odai
+.copy
   = @copy.odai.text
   = @copy.catchphrase
   -# = @copy.image
   = @copy.presentation
+  - @comments.each do |comment|
+    = comment.user.name
+    = comment.created_at.strftime("%Y/%m/%d %H:%M")
+    = comment.text
   - if user_signed_in?
     .form
       = form_for [@odai,@copy,@comment] do |f|

@@ -43,6 +43,7 @@ class CopiesController < ApplicationController
   def show
     @copy = Copy.find(params[:id])
     @odai = Odai.find(@copy.odai_id)
+    @comments = @copy.comments.includes(:user)
     @comment = Comment.new
   end
 
