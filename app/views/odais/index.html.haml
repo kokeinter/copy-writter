@@ -12,10 +12,10 @@
       = odai.text
       = image_tag odai.image.url, class:'odai_image' if odai.image.present?
       -# = image_tag "#{odai.image.url}", class:'odai_image'
-      -if user_signed_in?
+      - if user_signed_in?
         = link_to new_odai_copy_path(odai) do
           .btn.btn-primary.create__copy--btn このお題に投稿する
-      -if odai.user_id == current_user.id
+      - if user_signed_in? && odai.user_id == current_user.id
         = link_to edit_odai_path(odai) do
           .btn.btn-primary.edit__odai--btn お題を編集する
         = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
