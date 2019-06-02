@@ -1,3 +1,4 @@
+// application.html.haml
 .col-12.clearfix{
   display: flex;
   align-items: center;
@@ -8,6 +9,10 @@
     text-decoration: none;
     color: black;
     text-align: center;
+  }
+  .btns{
+  display: flex;
+  justify-content: space-between;
   }
 }
 
@@ -66,12 +71,82 @@
   }
 }
 
+// odai#index,copy#index
+// キャッチコピーかお題か
+.classification{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  &__odai__index{
+    margin-left:5px;
+    margin-right:5px;
+  }
+  &__copy__index{
+    margin-left:5px;
+    margin-right:5px;
+  }
+}
+
+// odai#index
+.odais{
+  background-color: lightgrey;
+  padding:20px;
+  border-radius: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  &__a__odai{
+    background-color: white;
+    padding:20px;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    text-align: center;
+    &__text{
+      margin-bottom: 10px;
+    }
+    &__image{
+      margin-bottom: 10px;
+    }
+  }
+  &__a__odai__create__copy--btn{
+    margin-right: 5px;
+  }
+  
+}
+// copy#index
+.copies{
+  background-color: lightgrey;
+  padding:20px;
+  border-radius: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  &__a__copy{
+    background-color: white;
+    padding:20px;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    text-align: center;
+    &__name{
+      margin-bottom: 10px;
+    }
+    &__text{
+      margin-bottom: 10px;
+    }
+    &__catchphrase{
+      margin-bottom: 10px;
+    }
+    &__presentation{
+      margin-bottom: 10px;
+    }
+  }
+  
+}
+
+// odai#index,user#show,copy#index
 // お題画像の表示サイズ
 .odai_image{
   width:250px;
   height:auto;
 }
 
-.classification__odai__index{
-  margin-left:10px;
-}
+
+
+

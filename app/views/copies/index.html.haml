@@ -10,25 +10,32 @@
   .row
     .col-md-4.classification__odai__index
       = link_to "お題", odais_path, class:'btn btn-outline-secondary btn-lg col-md-12'
-    .col-md-4
+    .col-md-4.classification__copy__index
       = link_to "キャッチコピー", root_path, class:'btn btn-secondary btn-lg col-md-12'
-  .row.small__classification
-    .btn.btn-secondary  新着
+  -# .row.small__classification
+  -#   .btn.btn-secondary  新着
 .contents
-  - @copies.each do |copy|
-    = copy.user.name
-    = copy.odai.text
-    = copy.catchphrase
-    = copy.presentation
-    - if user_signed_in? && copy.user_id == current_user.id
-    
-      -# = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
-      -# = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
-      -# = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
+  .copies
+    - @copies.each do |copy|
+      .copies__a__copy.col-md-3
+        .copies__a__copy__name
+          = copy.user.name
+        .copies__a__copy__text
+          = copy.odai.text
+        = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
+        .copies__a__copy__catchphrase
+          = copy.catchphrase
+        .copies__a__copy__presentation
+          = copy.presentation
+        - if user_signed_in? && copy.user_id == current_user.id
 
-      = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
-        %i.fa.fa-trash-o{"aria-hidden": "true"}
-      = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
-        %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
-      = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
-        %i.fa.fa-newspaper-o{"aria-hidden": "true"}
+          -# = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
+          -# = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
+          -# = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
+
+          = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
+            %i.fa.fa-trash-o.fa-2x{"aria-hidden": "true"}
+          = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
+            %i.fa.fa-pencil-square-o.fa-2x{"aria-hidden": "true"}
+          = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
+            %i.fa.fa-newspaper-o.fa-2x{"aria-hidden": "true"}
