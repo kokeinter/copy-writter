@@ -7,6 +7,14 @@ class CommentsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment.user_id == current_user.id
+      comment.destroy
+    end
+    redirect_to odai_copy_path(comment.copy.odai,comment.copy)
+  end
+
   private
 
   def comment_params

@@ -7,6 +7,8 @@
     = comment.user.name
     = comment.created_at.strftime("%Y/%m/%d %H:%M")
     = comment.text
+    -if comment.user_id == current_user.id
+      =link_to "削除", odai_copy_comment_path(comment.copy.odai,comment.copy,comment),method: :delete, class: 'btn btn-danger'
   - if user_signed_in?
     .form
       = form_for [@odai,@copy,@comment] do |f|
