@@ -1,10 +1,23 @@
-.title  お題を編集する
+.title  課題を編集する
+
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
 .form
   = form_for @odai do |f|
-    = f.label :image, "お題イメージ"
-    = f.file_field :image
-
-    = f.label :text, "お題詳細"
-    = f.text_area :text
-
-    = f.submit "投稿する"
+    .field__odai__new.custom-file.col-md-4
+      = f.label :image, "課題イメージを選択する",class:"custom-file-label"
+      %br/
+      = f.file_field :image ,class:"custom-file-input"
+    .field__odai__new.input-group.col-md-6.field__odai__new__textarea
+      = f.label :text, "課題本文",class: "input-group-text"
+      %br/
+      = f.text_area :text, class: "form-control"
+    .field__odai__new
+      = f.submit "投稿する"

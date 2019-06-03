@@ -1,17 +1,68 @@
-.copy
-  = @copy.odai.text
-  = @copy.catchphrase
-  -# = @copy.image
-  = @copy.presentation
-  - @comments.each do |comment|
-    = comment.user.name
-    = comment.created_at.strftime("%Y/%m/%d %H:%M")
-    = comment.text
-    -if comment.user_id == current_user.id
-      =link_to "削除", odai_copy_comment_path(comment.copy.odai,comment.copy,comment),method: :delete, class: 'btn btn-danger'
-  - if user_signed_in?
-    .form
-      = form_for [@odai,@copy,@comment] do |f|
-        = f.label :text, "コメント"
-        = f.text_area :text
-        = f.submit "コメントを投稿する"
+.title  キャッチコピー詳細
+
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+-# copy#editと同じ
+.contents
+  .contents__odai
+    .contents__odai__text
+      -# new.html.hamlとodaiの取り方が違うので部分テンプレート時に注意
+      = "課題本文:#{@copy.odai.text}"
+    .contents__odai__image
+      = image_tag @copy.odai.image.url, class:'odai_image',width: "250",height:"250" if @copy.odai.image.present?
+
+
+  .contents__middle
+    .contents__middle__copy.col-md-6
+      .contents__middle__copy__upper
+        .contents__middle__copy__classification
+          = "キャッチコピー"
+        .contents__middle__copy__catchphrase
+          = @copy.catchphrase
+          -# = @copy.image
+      .contents__middle__copy__under
+        .contents__middle__copy__classification
+          = "プレゼン内容"
+        .contents__middle__copy__presentation
+          = @copy.presentation
+    
+    - if user_signed_in?
+      .contents__middle__form.col-md-6
+        .form
+          = form_for [@odai,@copy,@comment] do |f|
+            .input-group
+              = f.label :text, "コメント",class: "input-group-text"
+              %br/
+              = f.text_area :text, class: "form-control"
+              = f.submit "投稿する"
+
+  .title__line
+    .title__line--red
+    .title__line--orange
+    .title__line--yellow
+    .title__line--yellowgreen
+    .title__line--lightblue
+    .title__line--blue
+    .title__line--purple
+
+  .contents__under__title.btn.btn-secondary.btn-lg.col-md-6 コメント一覧
+  
+  .contents__under.col-md-6
+    - @comments.each do |comment|
+      .contents__under__a__comment
+        .contents__under__a__comment__user__nfo
+          = comment.user.name
+          = comment.created_at.strftime("%Y/%m/%d %H:%M")
+        = comment.text
+        -if comment.user_id == current_user.id
+          =link_to odai_copy_comment_path(comment.copy.odai,comment.copy,comment),method: :delete do
+            %i.fa.fa-trash-o{"aria-hidden": "true"}
+
+

@@ -1,15 +1,39 @@
+.title  キャッチコピーを編集する
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
 .contents
-  = @copy.odai.text
-  -# new.html.hamlとodaiの取り方、prefixが違うので部分テンプレート時に注意
+  .contents__odai
+    .contents__odai__text
+      -# new.html.hamlとodaiの取り方が違うので部分テンプレート時に注意
+      = "課題本文:#{@copy.odai.text}"
+    .contents__odai__image
+      = image_tag @copy.odai.image.url, class:'odai_image',width: "250",height:"250" if @copy.odai.image.present?
+      
+  -# new.html.hamlとprefixが違うので部分テンプレート時に注意
   .form
     = form_for [@odai, @copy], url:odai_copy_path do |f|
-      = f.label :catchphrase, "キャッチコピー"
-      = f.text_field :catchphrase
 
-      = f.label :image
-      = f.file_field :image
+      .field__copy__new.input-group.col-md-6.field__copy__new__textfield
+        = f.label :catchphrase, "キャッチコピー",class: "input-group-text"
+        %br/
+        = f.text_field :catchphrase, class: "form-control"
 
-      = f.label :presentation, "プレゼン内容"
-      = f.text_area :presentation
+      -# コピーに画像は未実装　必要か要検討　ビューには表示されない
+      -# .field__copy__new.custom-file.col-md-4
+      -#   = f.label :image, "コピーイメージを選択する",class:"custom-file-label"
+      -#   %br/
+      -#   = f.file_field :image ,class:"custom-file-input"
 
-      = f.submit "Send"
+      .field__copy__new.input-group.col-md-6.field__copy__new__textarea
+        = f.label :presentation, "プレゼン内容",class: "input-group-text"
+        %br/
+        = f.text_area :presentation, class: "form-control"
+
+      .field__copy__new
+        = f.submit "投稿する"

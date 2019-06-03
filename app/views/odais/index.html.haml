@@ -3,7 +3,7 @@
 .classification
   .row
     .col-md-4.classification__odai__index
-      = link_to "お題", odais_path, class:'btn btn-secondary btn-lg col-md-12'
+      = link_to "課題", odais_path, class:'btn btn-secondary btn-lg col-md-12'
     .col-md-4.classification__copy__index
       = link_to "キャッチコピー", root_path, class:'btn btn-outline-secondary btn-lg col-md-12'
   -# .row.small__classification
@@ -13,15 +13,17 @@
   .odais
     - @odais.each do |odai|
       .odais__a__odai.col-md-3
-        .odais__a__odai__text
-          = odai.text
+        .odais__a__copy__name
+          = odai.user.name
         .odais__a__odai__image
           = image_tag odai.image.url, class:'odai_image',width: "250",height:"250" if odai.image.present?
+        .odais__a__odai__text
+          = odai.text
         -# = image_tag "#{odai.image.url}", class:'odai_image'
         - if user_signed_in?
           = link_to new_odai_copy_path(odai) do
             -# %i.fa.fa-pencil{"aria-hidden": "true"}
-            .btn.btn-primary.odais__a__odai__create__copy--btn このお題に投稿する
+            .btn.btn-primary.odais__a__odai__create__copy--btn 課題に投稿する
         - if user_signed_in? && odai.user_id == current_user.id
           = link_to edit_odai_path(odai) do
             %i.fa.fa-pencil-square-o.fa-2x.odais__a__odai__edit--btn{"aria-hidden": "true"}
