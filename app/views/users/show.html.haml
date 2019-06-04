@@ -33,6 +33,10 @@
   .user_copies.col-md-6
     - @copies.each do |copy|
       .user_copies__a__copy.col-md-6
+
+        -# いいね部分テンプレート　copy#indexのいいねとは別ファイル
+        = render partial: 'like', locals: { copy: copy }
+
         .user_copies_a__odai__image
           = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
         .user_copies__a__copy__text
