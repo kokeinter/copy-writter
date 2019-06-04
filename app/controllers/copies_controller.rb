@@ -43,7 +43,7 @@ class CopiesController < ApplicationController
   def show
     @copy = Copy.find(params[:id])
     @odai = Odai.find(@copy.odai_id)
-    @comments = @copy.comments.includes(:user)
+    @comments = @copy.comments.includes(:user).order("created_at DESC")
     @comment = Comment.new
   end
 
