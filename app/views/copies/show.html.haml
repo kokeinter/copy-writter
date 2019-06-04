@@ -53,7 +53,7 @@
     .title__line--purple
 
   .contents__under__title.btn.btn-secondary.btn-lg.col-md-6 コメント一覧
-  
+
   .contents__under.col-md-6
     - @comments.each do |comment|
       .contents__under__a__comment
@@ -63,6 +63,6 @@
         = comment.text
         -if comment.user_id == current_user.id
           =link_to odai_copy_comment_path(comment.copy.odai,comment.copy,comment),method: :delete do
-            %i.fa.fa-trash-o{"aria-hidden": "true"}
+            %i.fas.fa-trash-alt{"aria-hidden": "true"}
 
 

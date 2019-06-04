@@ -1,8 +1,12 @@
 // application.html.haml
+
+body{
+  font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif
+}
 .col-12.clearfix{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   .toplogo{
     font-family: 'Snell Roundhand',sans-serif;
     font-size: 60px;
@@ -201,6 +205,10 @@
 .odai_image{
   width:250px;
   height:auto;
+}
+.copies__a__copy__catchphrase{
+  font-size: 300%;
+  border: solid 1px;
 }
 
 // user#show

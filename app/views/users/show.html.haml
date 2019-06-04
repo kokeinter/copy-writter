@@ -24,11 +24,11 @@
         .user_odais_a__odai__text
           = odai.text
         = link_to edit_odai_path(odai) do
-          %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+          %i.fas.fa-edit{"aria-hidden": "true"}
           -# .btn.btn-primary.edit__copy--btn お題を編集する
         -# = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
         = link_to odai_path(odai) ,method: :delete do
-          %i.fa.fa-trash-o{"aria-hidden": "true"}
+          %i.fas.fa-trash-alt{"aria-hidden": "true"}
 
   .user_copies.col-md-6
     - @copies.each do |copy|
@@ -46,8 +46,8 @@
         -# = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
 
         = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
-          %i.fa.fa-newspaper-o{"aria-hidden": "true"}
+          %i.fas.fa-newspaper{"aria-hidden": "true"}
         = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
-          %i.fa.fa-pencil-square-o{"aria-hidden": "true"}
+          %i.fas.fa-edit{"aria-hidden": "true"}
         = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
-          %i.fa.fa-trash-o{"aria-hidden": "true"}
+          %i.fas.fa-trash-alt{"aria-hidden": "true"}

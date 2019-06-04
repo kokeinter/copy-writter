@@ -7,6 +7,7 @@
     %title CopyWritter
     -# bootstrapのcss読み込み
     %link{crossorigin: "anonymous", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", rel: "stylesheet"}/
+    %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}/
     %link{href: "css/style.scss", rel: "stylesheet"}/
     = csrf_meta_tags
     = csp_meta_tag
@@ -22,17 +23,20 @@
                 .toplogo CopyWritter
             .btns.col-md-6
               - if user_signed_in?
-                -# %a.btn.btn-primary{href: destroy_user_session_path, method: :delete, role: "button"} ログアウト
-                .col-md-4
+                .col-md-3
+                  .btn.btn-primary.d-block 求人検索
+                .col-md-3
                   = link_to "課題投稿", new_odai_path,  class: 'btn btn-primary d-block'
-                .col-md-4
+                .col-md-3
                   %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
-                .col-md-4
+                .col-md-3
                   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
               - else
-                .col-md-6
+                .col-md-4
+                  .btn.btn-primary.d-block 求人検索
+                .col-md-4
                   %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} ログイン
-                .col-md-6
+                .col-md-4
                   %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 新規登録
         .header__footer__line
           .header__footer__line--red

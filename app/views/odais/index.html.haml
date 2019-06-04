@@ -23,11 +23,11 @@
         - if user_signed_in?
           = link_to new_odai_copy_path(odai) do
             -# %i.fa.fa-pencil{"aria-hidden": "true"}
-            .btn.btn-primary.odais__a__odai__create__copy--btn 課題に投稿する
+            .btn.btn-primary.odais__a__odai__create__copy--btn コピーを投稿する
         - if user_signed_in? && odai.user_id == current_user.id
           = link_to edit_odai_path(odai) do
-            %i.fa.fa-pencil-square-o.fa-2x.odais__a__odai__edit--btn{"aria-hidden": "true"}
+            %i.fas.fa-edit.fa-2x.odais__a__odai__edit--btn{"aria-hidden": "true"}
             -# .btn.btn-primary.edit__odai--btn お題を編集する
           -# = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
           = link_to odai_path(odai) ,method: :delete do
-            %i.fa.fa-trash-o.fa-2x{"aria-hidden": "true"}
+            %i.fas.fa-trash-alt.fa-2x{"aria-hidden": "true"}

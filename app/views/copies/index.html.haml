@@ -10,7 +10,7 @@
 .contents
   .copies
     - @copies.each do |copy|
-      .copies__a__copy.col-md-3
+      .copies__a__copy.col-md-6
         -# 部分テンプレート候補
         .copies__a__copy__name
           = copy.user.name
@@ -24,11 +24,11 @@
 
         - if user_signed_in?
           = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
-            %i.fa.fa-newspaper-o.fa-2x{"aria-hidden": "true"}
+            %i.fas.fa-newspaper.fa-2x{"aria-hidden": "true"}
 
         - if user_signed_in? && copy.user_id == current_user.id
 
           = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
-            %i.fa.fa-pencil-square-o.fa-2x{"aria-hidden": "true"}
+            %i.fas.fa-edit.fa-2x{"aria-hidden": "true"}
           = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
-            %i.fa.fa-trash-o.fa-2x{"aria-hidden": "true"}
+            %i.fas.fa-trash-alt.fa-2x{"aria-hidden": "true"}
