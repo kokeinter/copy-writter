@@ -1,0 +1,28 @@
+%h2.title.form__title Log in
+
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+.form
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field__user__session
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field__user__session
+      = f.label :password
+      %br/
+      = f.password_field :password, autocomplete: "current-password"
+    - if devise_mapping.rememberable?
+      .field__user__session
+        = f.check_box :remember_me
+        = f.label :remember_me
+    .actions
+      = f.submit "Log in"
+  = render "devise/shared/links"

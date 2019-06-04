@@ -1,11 +1,34 @@
 -# 分類、検索軸
 .classification
-  .big__classification  キャッチコピー
-  .small__classification  新着
+  .row
+    .col-md-4.classification__odai__index
+      = link_to "課題", odais_path, class:'btn btn-outline-secondary btn-lg col-md-12'
+    .col-md-4.classification__copy__index
+      = link_to "キャッチコピー", root_path, class:'btn btn-secondary btn-lg col-md-12'
+  -# .row.small__classification
+  -#   .btn.btn-secondary  新着
 .contents
-  - @copies.each do |copy|
-    = copy.catchphrase
-    = copy.presentation
--# ログイン機能実施後に登録して実装
-    -# = copy.user.name
+  .copies
+    - @copies.each do |copy|
+      .copies__a__copy.col-md-6
+        -# 部分テンプレート候補
+        .copies__a__copy__name
+          = copy.user.name
+        = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
+        .copies__a__copy__text
+          = copy.odai.text
+        .copies__a__copy__catchphrase
+          = copy.catchphrase
+        .copies__a__copy__presentation
+          = copy.presentation
 
+        - if user_signed_in?
+          = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
+            %i.fas.fa-newspaper.fa-2x{"aria-hidden": "true"}
+
+        - if user_signed_in? && copy.user_id == current_user.id
+
+          = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
+            %i.fas.fa-edit.fa-2x{"aria-hidden": "true"}
+          = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
+            %i.fas.fa-trash-alt.fa-2x{"aria-hidden": "true"}

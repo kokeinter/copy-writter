@@ -1,0 +1,345 @@
+// application.html.haml
+
+body{
+  font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif
+}
+.col-12.clearfix{
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  .toplogo{
+    font-family: 'Snell Roundhand',sans-serif;
+    font-size: 60px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+  .btns{
+  display: flex;
+  justify-content: space-between;
+  }
+}
+
+.header__footer__line{
+  display: table;
+  width: 100%;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  .header__footer__line--red{
+    display: table-cell;
+    width: 14%;
+    height: 2px;
+    background-color: red;
+  }
+  .header__footer__line--orange{
+    display: table-cell;
+    width: 14%;
+    height: 2px;
+    background-color: orange;
+    
+  }
+  .header__footer__line--yellow{
+    display: table-cell;
+    
+    width: 14%;
+    height: 2px;
+    background-color: yellow;
+  }
+  .header__footer__line--yellowgreen{
+    display: table-cell;
+    width: 14%;
+    height: 2px;
+    background-color: yellowgreen;
+    
+  }
+  .header__footer__line--lightblue{
+    display: table-cell;
+    width: 14%;
+    height: 2px;
+    background-color: lightblue;
+    
+  }
+  .header__footer__line--blue{
+    display: table-cell;
+    width: 14%;
+    height: 2px;
+    background-color: blue;
+    
+  }
+  .header__footer__line--purple{
+    display: table-cell;
+    width: 14%;
+    height: 2px;
+    background-color: purple;
+    
+  }
+}
+
+// odai#new
+.title{
+  text-align: center;
+  font-size: 30px;
+  padding-top: 40px;
+}
+
+.title__line{
+  display: flex;
+  width: 50%;
+  padding-top: 30px;
+  margin-bottom: 10px;
+  margin-left:25%;
+  &--red{
+    width: 14%;
+    height: 2px;
+    background-color: red;
+  }
+  &--orange{
+    width: 14%;
+    height: 2px;
+    background-color: orange;
+    
+  }
+  &--yellow{
+    width: 14%;
+    height: 2px;
+    background-color: yellow;
+  }
+  &--yellowgreen{
+    width: 14%;
+    height: 2px;
+    background-color: yellowgreen;
+    
+  }
+  &--lightblue{
+    width: 14%;
+    height: 2px;
+    background-color: lightblue;
+    
+  }
+  &--blue{
+    width: 14%;
+    height: 2px;
+    background-color: blue;
+    
+  }
+  &--purple{
+    width: 14%;
+    height: 2px;
+    background-color: purple;
+    
+  }
+}
+
+
+// odai#index,copy#index
+// キャッチコピーかお題か
+.classification{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  &__odai__index{
+    margin-left:5px;
+    margin-right:5px;
+  }
+  &__copy__index{
+    margin-left:5px;
+    margin-right:5px;
+  }
+}
+
+// odai#index
+.odais{
+  background-color: lightgrey;
+  padding:20px;
+  border-radius: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  &__a__odai{
+    background-color: white;
+    padding:20px;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    text-align: center;
+    &__text{
+      margin-bottom: 10px;
+    }
+    &__image{
+      margin-bottom: 10px;
+    }
+  }
+  &__a__odai__create__copy--btn{
+    margin-right: 5px;
+  }
+  
+}
+// copy#index
+.copies{
+  background-color: lightgrey;
+  padding:20px;
+  border-radius: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  &__a__copy{
+    background-color: white;
+    padding:20px;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    text-align: center;
+    &__name{
+      margin-bottom: 10px;
+    }
+    &__text{
+      margin-bottom: 10px;
+    }
+    &__catchphrase{
+      margin-bottom: 10px;
+    }
+    &__presentation{
+      margin-bottom: 10px;
+    }
+  }
+  
+}
+
+// odai#index,user#show,copy#index
+// お題画像の表示サイズ
+.odai_image{
+  width:250px;
+  height:auto;
+}
+.copies__a__copy__catchphrase{
+  font-size: 300%;
+  border: solid 1px;
+}
+
+// user#show
+// 分類
+.mypage__classification{
+  margin-top: 20px;
+  .row{
+  justify-content: space-around;
+  }
+}
+// お題
+.user_contents{
+  display: flex;
+  .user_odais{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 5px lightgrey;
+    border-radius: 20px;
+    padding-top: 20px;
+    &_a__odai{
+      background-color: white;
+    }
+  }
+  // キャッチコピー
+  .user_copies{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 5px lightgrey;
+    border-radius: 20px;
+    padding-top: 20px;
+    &_a__copy{
+      background-color: white;
+    }
+  }
+}
+
+
+// user#registration#new
+// フォーム
+.form__title{
+  font-family: 'Snell Roundhand',sans-serif;
+}
+
+.form{
+  text-align: center;
+
+  // ユーザー新規登録 user#registration#new
+  .field__user__registration{
+    font-weight: bolder;
+    margin-bottom: 10px;
+    font-family: 'Snell Roundhand',sans-serif;
+  }
+  // ユーザーログインuser#session#new
+  .field__user__session{
+    font-weight: bolder;
+    margin-bottom: 10px;
+    font-family: 'Snell Roundhand',sans-serif;
+  }
+  // 課題投稿　odai#new
+  .field__odai__new{
+    margin-bottom: 10px;
+  }
+  .field__odai__new__textarea{
+    margin-left: 25%;
+  }
+
+  // コピー投稿　copy#new
+  .field__copy__new{
+    margin-bottom: 10px;
+  }
+  .field__copy__new__textfield{
+    margin-left: 25%;
+  }
+  .field__copy__new__textarea{
+    margin-left: 25%;
+  }
+  
+}
+
+  // コピー投稿　copy#new,copy#show
+  .contents{
+    .contents__odai{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    // copy#show
+    // キャッチコピーとコメント投稿フォーム
+    .contents__middle{
+      display: flex;
+      &__copy{
+        text-align: center;
+        background-color: lightgrey;
+        padding:20px;
+        margin-bottom: 10px;
+        border-radius: 40px;
+
+        &__upper{
+          background-color: white;
+          margin-bottom: 10px;
+          border-radius: 40px;
+        }
+
+        &__under{
+          background-color: white;
+          border-radius: 40px;
+        }
+
+      }
+
+    }
+    .contents__under__title{
+      margin-left: 25%;
+      margin-bottom:20px;
+    }
+    .contents__under{
+      background-color: lightgrey;
+      border-radius: 40px;
+      text-align: center;
+      margin-left: 25%;
+      padding:20px;
+      .contents__under__a__comment{
+        background-color: white;
+        border-radius: 40px;
+        margin-bottom: 10px;
+      }
+    }
+    
+  }
+
+
+

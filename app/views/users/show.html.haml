@@ -1,0 +1,53 @@
+-# 部分テンプレート候補
+.title.user__name
+  = "#{current_user.name}さんのマイページ"
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+
+.mypage__classification.col-md-12
+  .row
+    .mypage__classification.btn.btn-secondary.btn-lg.col-md-5 課題一覧
+    .mypage__classification.btn.btn-secondary.btn-lg.col-md-5 キャッチコピー一覧
+.user_contents
+  .user_odais.col-md-6
+    - @odais.each do |odai|
+      .user_odais_a__odai.col-md-6
+        .user_odais_a__odai__image
+          = image_tag odai.image.url, class:'odai_image',width: "250",height:"250" if odai.image.present?
+        .user_odais_a__odai__text
+          = odai.text
+        = link_to edit_odai_path(odai) do
+          %i.fas.fa-edit{"aria-hidden": "true"}
+          -# .btn.btn-primary.edit__copy--btn お題を編集する
+        -# = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
+        = link_to odai_path(odai) ,method: :delete do
+          %i.fas.fa-trash-alt{"aria-hidden": "true"}
+
+  .user_copies.col-md-6
+    - @copies.each do |copy|
+      .user_copies__a__copy.col-md-6
+        .user_copies_a__odai__image
+          = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
+        .user_copies__a__copy__text
+          = copy.odai.text
+        .user_copies__a__copy__catchphrase
+          = copy.catchphrase
+        .user_copies__a__copy__presentation
+          = copy.presentation
+        -# = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
+        -# = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
+        -# = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
+
+        = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
+          %i.fas.fa-newspaper{"aria-hidden": "true"}
+        = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get do
+          %i.fas.fa-edit{"aria-hidden": "true"}
+        = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete do
+          %i.fas.fa-trash-alt{"aria-hidden": "true"}

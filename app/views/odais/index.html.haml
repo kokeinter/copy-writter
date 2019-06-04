@@ -1,0 +1,33 @@
+-# 分類、検索軸
+-# 部分テンプレート候補
+.classification
+  .row
+    .col-md-4.classification__odai__index
+      = link_to "課題", odais_path, class:'btn btn-secondary btn-lg col-md-12'
+    .col-md-4.classification__copy__index
+      = link_to "キャッチコピー", root_path, class:'btn btn-outline-secondary btn-lg col-md-12'
+  -# .row.small__classification
+  -#   .btn.btn-secondary  新着
+.contents
+  -# 部分テンプレート候補
+  .odais
+    - @odais.each do |odai|
+      .odais__a__odai.col-md-3
+        .odais__a__copy__name
+          = odai.user.name
+        .odais__a__odai__image
+          = image_tag odai.image.url, class:'odai_image',width: "250",height:"250" if odai.image.present?
+        .odais__a__odai__text
+          = odai.text
+        -# = image_tag "#{odai.image.url}", class:'odai_image'
+        - if user_signed_in?
+          = link_to new_odai_copy_path(odai) do
+            -# %i.fa.fa-pencil{"aria-hidden": "true"}
+            .btn.btn-primary.odais__a__odai__create__copy--btn コピーを投稿する
+        - if user_signed_in? && odai.user_id == current_user.id
+          = link_to edit_odai_path(odai) do
+            %i.fas.fa-edit.fa-2x.odais__a__odai__edit--btn{"aria-hidden": "true"}
+            -# .btn.btn-primary.edit__odai--btn お題を編集する
+          -# = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
+          = link_to odai_path(odai) ,method: :delete do
+            %i.fas.fa-trash-alt.fa-2x{"aria-hidden": "true"}
