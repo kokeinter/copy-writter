@@ -14,6 +14,25 @@
         -# 部分テンプレート候補
         .copies__a__copy__name
           = copy.user.name
+
+        -#   Likesコントローラーでeachを使うと一つ一つのコピーと紐つけられないので、こちらでデータ取得
+        -if user_signed_in?
+          .copies__a__copy__like
+            - like = Like.where(copy_id: copy.id).where(user_id: current_user.id)
+            - if like.present?
+              .copies__a__copy__liked__icon
+                - like = Like.find_by(copy_id: copy.id, user_id: current_user.id)
+                = link_to odai_copy_like_path(copy.odai_id,copy.id,like.id),method: :delete do
+                  %i.fas.fa-heart
+            - else
+              .copies__a__copy__like__icon
+                = link_to odai_copy_likes_path(copy.odai_id,copy.id),method: :post do
+                  %i.far.fa-heart
+            .copies__a__copy__like__count
+              - count = Like.where(copy_id: copy.id).count
+              = count
+
+
         = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
         .copies__a__copy__text
           = copy.odai.text

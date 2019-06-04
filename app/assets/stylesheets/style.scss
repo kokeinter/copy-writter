@@ -187,6 +187,9 @@ body{
     &__name{
       margin-bottom: 10px;
     }
+    &__like{
+      display: flex;
+    }
     &__text{
       margin-bottom: 10px;
     }
@@ -210,6 +213,13 @@ body{
   font-size: 300%;
   border: solid 1px;
 }
+.fas.fa-heart{
+  color: red;
+}
+.far.fa-heart{
+  color: red;
+}
+
 
 // user#show
 // 分類
