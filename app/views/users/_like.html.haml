@@ -1,4 +1,6 @@
 -# copy#indexのいいねと別ファイルなので注意
+
+  -# ユーザーがサインインしている場合は、自分がいいねしているか、していないかでハートの色分け
 -if user_signed_in?
   .copies__a__copy__like
     - like = Like.where(copy_id: copy.id).where(user_id: current_user.id)
@@ -14,4 +16,18 @@
     .copies__a__copy__like__count
       - count = Like.where(copy_id: copy.id).count
       = count
-      
+  -# ユーザーがサインインしていない場合は、いいねがあるかないかでハートの色分け
+-else
+  .copies__a__copy__like
+    - like = Like.where(copy_id: copy.id)
+    -if like.present?
+      .copies__a__copy__liked__icon
+        %i.fas.fa-heart
+
+    -else
+      .copies__a__copy__like__icon
+        %i.far.fa-heart
+    .copies__a__copy__like__count
+    - count = Like.where(copy_id: copy.id).count
+    = count
+
