@@ -24,7 +24,8 @@ class CopiesController < ApplicationController
     # binding.pry
     copy = Copy.find(params[:id])
     copy.destroy if copy.user_id == current_user.id
-    redirect_to "/users/#{current_user.id}"
+    # redirect_to "/users/#{current_user.id}"
+    redirect_back(fallback_location: root_path)
   end
 
   def edit

@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     # binding.pry
     Comment.create(text: comment_params[:text], copy_id: params[:copy_id], user_id: current_user.id)
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if comment.user_id == current_user.id
       comment.destroy
     end
-    redirect_to odai_copy_path(comment.copy.odai,comment.copy)
+    redirect_back(fallback_location: root_path)
   end
 
   private
