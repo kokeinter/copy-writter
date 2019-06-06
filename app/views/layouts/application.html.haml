@@ -4,11 +4,14 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
     -# bootstrapのmeta読み込み
     %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}/
+    
     %title CopyWritter
     -# bootstrapのcss読み込み
     %link{crossorigin: "anonymous", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", rel: "stylesheet"}/
     %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}/
     %link{href: "css/style.scss", rel: "stylesheet"}/
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -16,28 +19,26 @@
   %body
     .container-fulid
       %header
-        .row
-          .col-12.clearfix
-            .logo-div.col-md-4
-              =link_to root_path do
-                .toplogo CopyWritter
-            .btns.col-md-6
-              - if user_signed_in?
-                .col-md-3
-                  .btn.btn-primary.d-block 求人検索
-                .col-md-3
-                  = link_to "課題投稿", new_odai_path,  class: 'btn btn-primary d-block'
-                .col-md-3
-                  %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
-                .col-md-3
-                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
-              - else
-                .col-md-4
-                  .btn.btn-primary.d-block 求人検索
-                .col-md-4
-                  %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} ログイン
-                .col-md-4
-                  %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 新規登録
+        .row.header
+          .logo-div.col-md-4
+            =link_to root_path do
+              .toplogo CopyWritter
+          - if user_signed_in?
+            .col-md-2
+              .btn.btn-primary.d-block 求人検索
+            .col-md-2
+              = link_to "課題投稿", new_odai_path,  class: 'btn btn-primary d-block'
+            .col-md-2
+              %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
+            .col-md-2
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
+          - else
+            .col-md-2
+              .btn.btn-primary.d-block 求人検索
+            .col-md-2
+              %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} ログイン
+            .col-md-2
+              %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 新規登録
         .header__footer__line
           .header__footer__line--red
           .header__footer__line--orange
@@ -48,7 +49,7 @@
           .header__footer__line--purple
       = yield
       -# bootstrapのjs読み込み
-      %script{crossorigin: "anonymous", integrity: "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", src: "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
+      %script{crossorigin: "anonymous", integrity: "sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7", src: "https://code.jquery.com/jquery-3.1.1.min.js"}
       %script{crossorigin: "anonymous", integrity: "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1", src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"}
       %script{crossorigin: "anonymous", integrity: "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", src: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"}
       %footer
