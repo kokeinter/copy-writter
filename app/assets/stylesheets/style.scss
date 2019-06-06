@@ -3,10 +3,8 @@
 body{
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif
 }
-.col-12.clearfix{
-  display: flex;
+.row.header{
   align-items: center;
-  // justify-content: space-between;
   .toplogo{
     font-family: 'Snell Roundhand',sans-serif;
     font-size: 60px;

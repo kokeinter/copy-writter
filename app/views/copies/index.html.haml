@@ -19,8 +19,8 @@
         -# いいね部分テンプレート　user#showのいいねとは別ファイル
         -#   Likesコントローラーでeachを使うと一つ一つのコピーと紐つけられないので、こちらでデータ取得
         = render partial: 'like', locals: { copy: copy }
-        
 
+        
         = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
         .copies__a__copy__text
           = copy.odai.text
