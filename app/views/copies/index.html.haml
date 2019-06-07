@@ -1,3 +1,9 @@
+-# パンくずリスト
+%nav{"aria-label" => "パンくずリスト"}
+  %ol.breadcrumb
+    %li.breadcrumb-item.active{"aria-current" => "page"} ホーム
+
+
 -# 分類、検索軸
 .classification
   .row
@@ -20,14 +26,28 @@
         -#   Likesコントローラーでeachを使うと一つ一つのコピーと紐つけられないので、こちらでデータ取得
         = render partial: 'like', locals: { copy: copy }
 
-        
+        -# SNSボタン
+        %ul.snsbtniti
+          %li
+            %a.flowbtn7.fl_tw7{href: "https://twitter.com/intent/tweet?text=CopyWritter#{copy.catchphrase}",target: "_blank"}
+              %i.fab.fa-twitter
+          %li
+            %a.flowbtn7.insta_btn7{href: "https://www.instagram.com/?hl=ja",target: "_blank"}
+              %i.fab.fa-instagram
+          %li
+            %a.flowbtn7.fl_fb7{href: "https://www.facebook.com/sharer",target: "_blank"}
+              %i.fab.fa-facebook-f
+
+
         = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
         .copies__a__copy__text
           = copy.odai.text
-        .copies__a__copy__catchphrase
+        .copies__a__copy__catchphrase.overflow-auto{style: "max-height: 70px;"}
           = copy.catchphrase
         .copies__a__copy__presentation
           = copy.presentation
+          
+
 
         - if user_signed_in?
           = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
