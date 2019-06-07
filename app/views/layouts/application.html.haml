@@ -23,6 +23,15 @@
           .logo-div.col-md-4
             =link_to root_path do
               .toplogo CopyWritter
+          -# .btn-group.col-md-3
+            -# %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+            -#   メニュー
+            -# .dropdown-menu
+            -#   -# %a.dropdown-item{:href => "#"} 求人検索
+            -#   %a.dropdown-item{href: new_odai_path} 課題投稿
+            -#   %a.dropdown-item{href: "/users/#{current_user.id}"} マイページ
+            -#   %a.dropdown-item{href: destroy_user_session_path, method: :delete} ログアウト
+
           - if user_signed_in?
             .col-md-2
               .btn.btn-primary.d-block 求人検索
