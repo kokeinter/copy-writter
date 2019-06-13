@@ -9,7 +9,7 @@
     -# bootstrapのcss読み込み
     %link{crossorigin: "anonymous", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", rel: "stylesheet"}/
     %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}/
-    %link{href: "css/style.scss", rel: "stylesheet"}/
+    -# %link{href: "css/style.scss", rel: "stylesheet"}/
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
 
     = csrf_meta_tags
@@ -38,16 +38,30 @@
             .col-md-2
               = link_to "課題投稿", new_odai_path,  class: 'btn btn-primary d-block'
             .col-md-2
-              %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} マイページ
+              %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} 個人マイページ
             .col-md-2
-              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
+              = link_to "個人ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
           - else
             .col-md-2
               .btn.btn-primary.d-block 求人検索
             .col-md-2
-              %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} ログイン
+              %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} 個人ログイン
             .col-md-2
-              %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 新規登録
+              %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 個人新規登録
+
+          - if company_signed_in?
+            .col-md-2
+              = link_to "法人マイページ","companies/#{current_company.id}",method: :get , class: 'btn btn-primary d-block'
+            .col-md-2
+              = link_to "法人ログアウト",destroy_company_session_path,method: :delete, class: 'btn btn-primary d-block'
+          - else
+            .col-md-2
+              = link_to "法人ログイン",new_company_session_path, class: 'btn btn-primary d-block'
+            .col-md-2
+              = link_to "法人新規登録",new_company_registration_path, class: 'btn btn-primary d-block'
+            
+
+
         .header__footer__line
           .header__footer__line--red
           .header__footer__line--orange
