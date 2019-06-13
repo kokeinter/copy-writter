@@ -3,10 +3,8 @@
 body{
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif
 }
-.col-12.clearfix{
-  display: flex;
+.row.header{
   align-items: center;
-  // justify-content: space-between;
   .toplogo{
     font-family: 'Snell Roundhand',sans-serif;
     font-size: 60px;
@@ -187,6 +185,9 @@ body{
     &__name{
       margin-bottom: 10px;
     }
+    &__like{
+      display: flex;
+    }
     &__text{
       margin-bottom: 10px;
     }
@@ -200,6 +201,7 @@ body{
   
 }
 
+
 // odai#index,user#show,copy#index
 // お題画像の表示サイズ
 .odai_image{
@@ -210,6 +212,86 @@ body{
   font-size: 300%;
   border: solid 1px;
 }
+.fas.fa-heart{
+  color: red;
+}
+.far.fa-heart{
+  color: red;
+}
+/* ボタン全体 */
+.flowbtn7{
+  border-radius:50%;
+  position:relative;
+  display:inline-block;
+  width:30px;
+  height:30px;
+  font-size:20px;
+  color:#fff!important;
+  text-decoration:none;
+  transition:.5s;			
+  }
+  /* アイコンをど真ん中に*/
+  .flowbtn7 i{
+  position:absolute;
+  top:50%;
+  left:50%;
+  -ms-transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+  }
+  /* ulタグの内側余白を０にする */
+  ul.snsbtniti{
+  padding:0!important;
+  }
+  /* ボタン全体の位置 */
+  .snsbtniti{
+  display:flex;
+  }
+  /* ボタンにマウスを乗せた時 */
+  .flowbtn7:hover{
+  -webkit-transform:translateY(-5px);
+  -ms-transform:translateY(-5px);
+  transform:translateY(-5px);
+  }
+  /* Twitter */
+  .fl_tw7{
+  background:linear-gradient(135deg, #13f1fc 0%,#0470dc 100%);
+  }
+  /* Instagramアイコン位置 */
+  .insta_btn7 .fa-instagram{
+  font-size:20px;	
+  }
+  /* Instagram紫グラデ背景 */
+  .insta_btn7{
+  background:-webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  background:linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  overflow:hidden;	
+  }
+  /* Instagramオレンジグラデ背景 */
+  .insta_btn7:before{
+  content: '';
+  position:absolute;
+  top:27px;
+  left:-12px;
+  width:59px;
+  height:40px;
+  background:-webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  background:radial-gradient(#ffdb2c 5%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+  }
+  /* Facebook */
+  .fl_fb7{
+  background: linear-gradient(135deg, #6699ff 0%,#3b5998 100%);
+  }
+  /* LINE */
+  .fl_li7{
+  background: linear-gradient(135deg, #3a9278 0%,#00c300 100%);
+  }
+  /* メールボタン */
+  .fl_ma7{
+  background:linear-gradient(135deg, #fad961 0%,#f76b1c 100%);
+  font-size:26px;	
+  }
+
 
 // user#show
 // 分類

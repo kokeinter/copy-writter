@@ -1,3 +1,10 @@
+-# パンくずリスト
+%nav{"aria-label" => "パンくずリスト"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: "/"} ホーム
+    %li.breadcrumb-item.active{"aria-current" => "page"} マイページ
+
 -# 部分テンプレート候補
 .title.user__name
   = "#{current_user.name}さんのマイページ"
@@ -33,6 +40,23 @@
   .user_copies.col-md-6
     - @copies.each do |copy|
       .user_copies__a__copy.col-md-6
+
+        -# いいね部分テンプレート　copy#indexのいいねとは別ファイル
+        = render partial: 'like', locals: { copy: copy }
+
+        -# SNSボタン
+        %ul.snsbtniti
+          %li
+            %a.flowbtn7.fl_tw7{href: "https://twitter.com/intent/tweet?text=#{copy.catchphrase}",target: "_blank"}
+              %i.fab.fa-twitter
+          %li
+            %a.flowbtn7.insta_btn7{href: "https://www.instagram.com/?hl=ja",target: "_blank"}
+              %i.fab.fa-instagram
+          %li
+            %a.flowbtn7.fl_fb7{href: "https://www.facebook.com/sharer",target: "_blank"}
+              %i.fab.fa-facebook-f
+
+
         .user_copies_a__odai__image
           = image_tag copy.odai.image.url, class:'odai_image',width: "250",height:"250" if copy.odai.image.present?
         .user_copies__a__copy__text
