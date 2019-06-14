@@ -1,0 +1,53 @@
+-# パンくずリスト
+%nav{"aria-label" => "パンくずリスト"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: "/"} ホーム
+    %li.breadcrumb-item.active{"aria-current" => "page"} 求人一覧
+
+
+.title  求人一覧
+
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+.contents
+  .recruits
+    - @recruits.each do |recruit|
+      .recruits__a__recruit.col-md-4
+        -# .recruits__a__recruit__company
+        -#   = "#{recruit.company.name}"
+
+        .recruits__a__recruit__image
+          = image_tag recruit.image.url, width: "250",height:"250" if recruit.image.present?
+
+        .recruits__a__recruit__job
+          = "#{recruit.job}"
+
+        .recruits__a__recruit__address
+          = "#{recruit.address}"
+          
+        .recruits__a__recruit__salary
+          = "#{recruit.salary}"
+        
+        -# 個人がサインインしている場合
+        - if user_signed_in?
+          .recruits__a__recruit__apply.col-md-6
+            = link_to "応募する",new_user_apply_path(current_user.id),class:"btn btn-danger d-block"
+        - else
+          .recruits__a__recruit__apply.col-md-6
+            = link_to "ログインして応募する",new_user_registration_path,class:"btn btn-danger d-block"
+
+        -# 法人がログインしている場合
+        - if company_signed_in?
+          .recruits__a__recruit__edit.col-md-6
+            = link_to "編集する",edit_recruit_path(recruit),class:"btn btn-danger d-block"
+          .recruits__a__recruit__delete.col-md-6
+            = link_to "削除する",recruit_path(recruit),method: :delete ,class:"btn btn-danger d-block"
+

@@ -1,0 +1,31 @@
+.title  求人作成
+
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+.form
+  = form_for @recruit do |f|
+
+    .input-group.col-md-6
+      = f.label :job,"職種",class: "recruit__job__text input-group-text"
+      = f.text_field :job,class: "recruit__job form-control"
+
+    .input-group.col-md-6
+      = f.label :address,"勤務地",class: "recruit__address__text input-group-text"
+      = f.text_field :address,class: "recruit__address form-control"
+
+    .input-group.col-md-6
+      = f.label :salary,"給料",class: "recruit__salary__text input-group-text"
+      = f.text_field :salary,class: "recruit__salary form-control"
+
+    .custom-file.col-md-4
+      = f.label :image,"イメージ",class: "recruit__image__text custom-file-label"
+      = f.file_field :image,class: "recruit__image custom-file-input"
+
+    =  f.submit "作成する"
