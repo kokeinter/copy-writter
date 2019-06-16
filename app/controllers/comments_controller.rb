@@ -3,8 +3,15 @@ class CommentsController < ApplicationController
 
   def create
     # binding.pry
-    Comment.create(text: comment_params[:text], copy_id: params[:copy_id], user_id: current_user.id)
-    redirect_back(fallback_location: root_path)
+    @comment = Comment.create(text: comment_params[:text], copy_id: params[:copy_id], user_id: current_user.id)
+    # redirect_back(fallback_location: root_path)
+    copy = Copy.find_by(id: params[:copy_id])
+    odai_id = copy.odai_id
+    respond_to do |format|
+      format.html { redirect_to odai_copy_comments_path(odai_id,params[:copy_id])  }
+      format.json
+    end
+
   end
 
   def destroy

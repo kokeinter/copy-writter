@@ -23,42 +23,33 @@
           .logo-div.col-md-4
             =link_to root_path do
               .toplogo CopyWritter
-          -# .btn-group.col-md-3
-            -# %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-            -#   メニュー
-            -# .dropdown-menu
-            -#   -# %a.dropdown-item{:href => "#"} 求人検索
-            -#   %a.dropdown-item{href: new_odai_path} 課題投稿
-            -#   %a.dropdown-item{href: "/users/#{current_user.id}"} マイページ
-            -#   %a.dropdown-item{href: destroy_user_session_path, method: :delete} ログアウト
+
+          .col-md-2
+            = link_to "求人検索" ,recruits_path,class:"btn btn-primary d-block"
 
           - if user_signed_in?
-            .col-md-2
-              = link_to "求人検索" ,recruits_path,class:"btn btn-primary d-block"
             .col-md-2
               = link_to "課題投稿", new_odai_path,  class: 'btn btn-primary d-block'
             .col-md-2
               %a.btn.btn-primary.d-block{href: "/users/#{current_user.id}", role: "button"} 個人マイページ
             .col-md-2
               = link_to "個人ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-primary d-block'
-          - else
-            .col-md-2
-              = link_to "求人検索" ,recruits_path,class:"btn btn-primary d-block"
-            .col-md-2
-              %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} 個人ログイン
-            .col-md-2
-              %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 個人新規登録
 
-          - if company_signed_in?
+          - elsif company_signed_in?
             .col-md-2
               = link_to "法人マイページ","companies/#{current_company.id}",method: :get , class: 'btn btn-primary d-block'
             .col-md-2
               = link_to "法人ログアウト",destroy_company_session_path,method: :delete, class: 'btn btn-primary d-block'
+
           - else
             .col-md-2
               = link_to "法人ログイン",new_company_session_path, class: 'btn btn-primary d-block'
             .col-md-2
               = link_to "法人新規登録",new_company_registration_path, class: 'btn btn-primary d-block'
+            .col-md-2
+              %a.btn.btn-primary.d-block{href: new_user_session_path, role: "button"} 個人ログイン
+            .col-md-2
+              %a.btn.btn-primary.d-block{href: new_user_registration_path, role: "button"} 個人新規登録
             
 
 
