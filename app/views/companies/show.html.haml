@@ -1,4 +1,27 @@
-企業マイページ
+-# パンくずリスト
+%nav{"aria-label" => "パンくずリスト"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: "/"} ホーム
+    %li.breadcrumb-item.active{"aria-current" => "page"} 法人マイページ
+
+-# 部分テンプレート候補
+.title.user__name
+  = "法人マイページ"
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+
 .col-md-4
   = link_to "求人作成画面",new_recruit_path,class:"btn btn-danger d-block"
+
+.mypage__classification.col-md-12
+  .row
+    .mypage__classification.btn.btn-secondary.btn-lg.col-md-5 求人一覧
 

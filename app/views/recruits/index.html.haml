@@ -36,10 +36,15 @@
         .recruits__a__recruit__salary
           = "#{recruit.salary}"
         
-        -# 個人がサインインしている場合
-        - if user_signed_in?
+        -# 個人がサインインして応募している場合
+        - if user_signed_in? && Apply.find_by(recruit_id: recruit.id , user_id: current_user.id).present?
+          .recruits__a__recruit__apply.col-md-6.btn.btn-secondary.d-block
+            = "応募済みです"
+
+        - elsif user_signed_in?
           .recruits__a__recruit__apply.col-md-6
-            = link_to "応募する",new_user_apply_path(current_user.id),class:"btn btn-danger d-block"
+            = link_to "応募する",recruit_applies_path(recruit.id),class:"btn btn-danger d-block",method: :post
+
         - else
           .recruits__a__recruit__apply.col-md-6
             = link_to "ログインして応募する",new_user_registration_path,class:"btn btn-danger d-block"
