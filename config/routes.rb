@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'copies#index'
-  resources :users do
+  resources :users
+  resources :companies
+  resources :recruits do
     resources :applies
   end
-  resources :companies
-  resources :recruits
 
   resources :odais , only: [:index, :new, :create, :edit, :update, :destroy]do
     resources :copies do
