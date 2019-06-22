@@ -17,11 +17,47 @@
   .title__line--blue
   .title__line--purple
 
+.contents
+  .contents__company
+    .contents__company__upper.col-md-4
+      = link_to "求人作成画面",new_recruit_path,class:"btn btn-danger d-block"
 
-.col-md-4
-  = link_to "求人作成画面",new_recruit_path,class:"btn btn-danger d-block"
+    .contents__company__under.col-md-12
+      .contents__company__under__left.col-md-5
+        .mypage__classification.btn.btn-secondary.btn-lg.col-md-12
+          = "求人一覧"
+        - @recruits.each do |recruit|
+          .recruits__a__recruit.col-md-12
+            -# .recruits__a__recruit__company
+            -#   = "#{recruit.company.name}"
+            .recruits__a__recruit__left
+              .recruits__a__recruit__left__image
+                = image_tag recruit.image.url, width: "250",height:"250" if recruit.image.present?
 
-.mypage__classification.col-md-12
-  .row
-    .mypage__classification.btn.btn-secondary.btn-lg.col-md-5 求人一覧
+            .recruits__a__recruit__right
+              .recruits__a__recruit__right__day
+                = "掲載日時:#{recruit.created_at.strftime("%Y/%m/%d %H:%M")}"
+
+              .recruits__a__recruit__right__job
+                = "職種:#{recruit.job}"
+
+              .recruits__a__recruit__right__address
+                = "勤務地:#{recruit.address}"
+                
+              .recruits__a__recruit__right__salary
+                = "給料:#{recruit.salary}"
+
+              - if company_signed_in?
+                .recruits__a__recruit__apply
+                .recruits__a__recruit__edit.col-md-12
+                  = link_to "編集する",edit_recruit_path(recruit),class:"btn btn-danger d-block"
+                .recruits__a__recruit__delete.col-md-12
+                  = link_to "削除する",recruit_path(recruit),method: :delete ,class:"btn btn-danger d-block"
+      
+      .contents__company__under__right.col-md-5
+        .mypage__classification.btn.btn-secondary.btn-lg.col-md-12 応募一覧
+
+  .mypage__classification.col-md-12
+    .row
+      .mypage__classification.btn.btn-secondary.btn-lg.col-md-5 求人一覧
 

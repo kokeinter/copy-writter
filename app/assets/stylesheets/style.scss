@@ -424,4 +424,47 @@ body{
   }
 
 
+// recruits#index
+.recruits{
+  background-color: lightgrey;
+  border-radius: 40px;
+  padding:2%;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  &__a__recruit{
+    background-color: white;
+    border-radius: 40px;
+    display: flex;
+    padding:2%;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+}
 
+// company#show
+.contents__company{
+  justify-content: center;
+  &__upper{
+    margin: 20px auto;
+  }
+  &__under{
+    justify-content: center;
+    display: flex;
+    background-color: rgb(235, 233, 233);
+    border-radius: 40px;
+    padding:2%;
+    justify-content: space-around;
+    &__left{
+      background-color: lightgrey;
+      border-radius: 40px;
+      padding: 20px;
+    }
+  }
+}
+// recruits#show
+// googlemap
+#map{
+  width:500px;
+  height:500px;
+}
