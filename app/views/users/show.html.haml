@@ -3,7 +3,7 @@
   %ol.breadcrumb
     %li.breadcrumb-item
       %a{href: "/"} ホーム
-    %li.breadcrumb-item.active{"aria-current" => "page"} マイページ
+    %li.breadcrumb-item.active{"aria-current" => "page"} 個人マイページ
 
 -# 部分テンプレート候補
 .title.user__name
@@ -32,8 +32,6 @@
           = odai.text
         = link_to edit_odai_path(odai) do
           %i.fas.fa-edit{"aria-hidden": "true"}
-          -# .btn.btn-primary.edit__copy--btn お題を編集する
-        -# = link_to "お題を削除する", odai_path(odai) ,method: :delete, class: 'btn btn-primary delete__odai--btn'
         = link_to odai_path(odai) ,method: :delete do
           %i.fas.fa-trash-alt{"aria-hidden": "true"}
 
@@ -65,9 +63,6 @@
           = copy.catchphrase
         .user_copies__a__copy__presentation
           = copy.presentation
-        -# = link_to "削除", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :delete, class: 'btn btn-danger'
-        -# = link_to "編集", "/odais/#{copy.odai.id}/copies/#{copy.id}/edit" ,method: :get, class: 'btn btn-danger'
-        -# = link_to "詳細", "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get, class: 'btn btn-danger'
 
         = link_to "/odais/#{copy.odai.id}/copies/#{copy.id}" ,method: :get do
           %i.fas.fa-newspaper{"aria-hidden": "true"}
