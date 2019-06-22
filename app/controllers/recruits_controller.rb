@@ -27,6 +27,10 @@ class RecruitsController < ApplicationController
     redirect_to recruits_path, method: :get
   end
 
+  def show
+    @recruit = Recruit.find(params[:id])
+  end
+
   def destroy
     recruit = Recruit.find(params[:id])
     if recruit.company_id == current_company.id

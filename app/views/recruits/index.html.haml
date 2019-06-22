@@ -18,41 +18,47 @@
   .title__line--purple
 
 .contents
-  .recruits
+  .recruits.col-md-12
     - @recruits.each do |recruit|
-      .recruits__a__recruit.col-md-4
+      .recruits__a__recruit.col-md-5
         -# .recruits__a__recruit__company
         -#   = "#{recruit.company.name}"
+        .recruits__a__recruit__left
+          .recruits__a__recruit__left__image
+            = image_tag recruit.image.url, width: "250",height:"250" if recruit.image.present?
 
-        .recruits__a__recruit__image
-          = image_tag recruit.image.url, width: "250",height:"250" if recruit.image.present?
+        .recruits__a__recruit__right
+          .recruits__a__recruit__right__day
+            = "掲載日時:#{recruit.created_at.strftime("%Y/%m/%d %H:%M")}"
 
-        .recruits__a__recruit__job
-          = "#{recruit.job}"
+          .recruits__a__recruit__right__job
+            = "職種:#{recruit.job}"
 
-        .recruits__a__recruit__address
-          = "#{recruit.address}"
-          
-        .recruits__a__recruit__salary
-          = "#{recruit.salary}"
+          .recruits__a__recruit__right__address
+            = "勤務地:#{recruit.address}"
+            
+          .recruits__a__recruit__right__salary
+            = "給料:#{recruit.salary}"
+
+          .recruits__a__recruit__show.col-md-12
+            = link_to "詳細をみる",recruit_path(recruit.id),class:"btn btn-danger d-block",method: :get
         
-        -# 個人がサインインして応募している場合
-        - if user_signed_in? && Apply.find_by(recruit_id: recruit.id , user_id: current_user.id).present?
-          .recruits__a__recruit__apply.col-md-6.btn.btn-secondary.d-block
-            = "応募済みです"
+          -# 個人がサインインして応募している場合
+          - if user_signed_in? && Apply.find_by(recruit_id: recruit.id , user_id: current_user.id).present?
+            .recruits__a__recruit__apply.col-md-12.btn.btn-secondary.d-block
+              = "応募済みです"
 
-        - elsif user_signed_in?
-          .recruits__a__recruit__apply.col-md-6
-            = link_to "応募する",recruit_applies_path(recruit.id),class:"btn btn-danger d-block",method: :post
+          - elsif user_signed_in?
+            .recruits__a__recruit__apply.col-md-12
+              = link_to "応募する",recruit_applies_path(recruit.id),class:"btn btn-danger d-block",method: :post
 
-        - else
-          .recruits__a__recruit__apply.col-md-6
-            = link_to "ログインして応募する",new_user_registration_path,class:"btn btn-danger d-block"
+          - elsif company_signed_in?
+            .recruits__a__recruit__apply
+            .recruits__a__recruit__edit.col-md-12
+              = link_to "編集する",edit_recruit_path(recruit),class:"btn btn-danger d-block"
+            .recruits__a__recruit__delete.col-md-12
+              = link_to "削除する",recruit_path(recruit),method: :delete ,class:"btn btn-danger d-block"
 
-        -# 法人がログインしている場合
-        - if company_signed_in?
-          .recruits__a__recruit__edit.col-md-6
-            = link_to "編集する",edit_recruit_path(recruit),class:"btn btn-danger d-block"
-          .recruits__a__recruit__delete.col-md-6
-            = link_to "削除する",recruit_path(recruit),method: :delete ,class:"btn btn-danger d-block"
-
+          - else
+            .recruits__a__recruit__apply.col-md-12
+              = link_to "ログインして応募する",new_user_registration_path,class:"btn btn-danger d-block"

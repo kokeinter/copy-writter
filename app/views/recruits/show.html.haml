@@ -1,0 +1,26 @@
+-# パンくずリスト
+%nav{"aria-label" => "パンくずリスト"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: "/"} ホーム
+    %li.breadcrumb-item
+      %a{href: recruits_path} 求人一覧
+    %li.breadcrumb-item.active{"aria-current" => "page"} 求人詳細
+
+
+.title  求人詳細
+
+.title__line
+  .title__line--red
+  .title__line--orange
+  .title__line--yellow
+  .title__line--yellowgreen
+  .title__line--lightblue
+  .title__line--blue
+  .title__line--purple
+
+.container
+  = "勤務地：#{@recruit.address}"
+#map
+
+
